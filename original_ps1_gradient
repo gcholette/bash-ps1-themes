@@ -1,0 +1,35 @@
+#!/bin/bash
+PRIMARY="\[\e[38;5;37m\]"
+SECONDARY='\[\033[38;5;129m\]'
+THIRD='\[\033[38;5;214m\]'
+NC='\[\033[0m\]'
+
+grad() {
+  COUNTER=0
+  COLOR=$1
+  TXT=$2
+  MOD="$(($((${#TXT}/6))*2))"
+  for (( i=0; i<${#TXT}; i++ )); do  
+    printf "\[\033[38;5;${COLOR}m\]${TXT:COUNTER:1}"
+    COUNTER=$(expr $COUNTER + 1)
+    if [ $((i%$MOD)) == 0 ]
+    then 
+      COLOR=$(expr $COLOR + 1)
+    fi
+  done
+}
+
+p() {
+  TEXT=$1
+  printf "$PRIMARY${TEXT}${NC}"
+}
+s() {
+  TEXT=$1
+  printf "${SECONDARY}${TEXT}${NC}"
+}
+t() {
+  TEXT=$1
+  printf "${THIRD}${TEXT}${NC}"
+}
+
+export PS1="\[\e[30;48;5;37m\]  ${NC} $(grad 35 $USER) $(s '>>=') $(s '\w') \r\n\[\e[30;48;5;37m\]  ${NC} \[\e[38;5;37m\]\d \[\e[38;5;31m\]\t$( s '$(git branch 2>/dev/null | grep '^*' | colrm 1 1)' )$(t ' λ') "
