@@ -1,8 +1,14 @@
 #!/bin/bash
-PRIMARY="\[\e[38;5;197m\]"
-SECONDARY='\[\033[38;5;165m\]'
-THIRD='\[\033[38;5;214m\]'
-NC='\[\033[0m\]'
+PRI=197
+SEC=162
+THI=214
+FOR=165
+
+PRIMARY="\[\e[38;5;${PRI}m\]"
+SECONDARY="\[\033[38;5;${SEC}m\]"
+THIRD="\[\033[38;5;${THI}m\]"
+FOURTH="\[\033[38;5;${FOR}m\]"
+NC="\[\033[0m\]"
 
 grad() {
   COUNTER=0
@@ -36,6 +42,10 @@ t() {
   TEXT=$1
   printf "${THIRD}${TEXT}${NC}"
 }
+f() {
+  TEXT=$1
+  printf "${FOURTH}${TEXT}${NC}"
+}
 
 c() {
   COLOR=$1
@@ -47,4 +57,4 @@ datetime() {
 	printf "$A"
 }
 
-export PS1="$(c 161) $(grad 197 5 $USER) $(t '>>') $(p '$(grad 196 7 $(pwd))') \r\n$(c 162) $(p '$(grad 197 6 $(datetime))')$(s '$(git branch 2>/dev/null | grep '^*' | colrm 1 1)' ) \r\n$(c 163) $(t '\$ ')"
+export PS1="$(c $(expr $SEC - 1)) $(grad $PRI 5 $USER'@'$HOSTNAME) $(t '>>') $(p '$(grad $PRI 7 $(pwd))') \r\n$(c $SEC) $(p '$(grad $PRI 6 $(datetime))')$(f '$(git branch 2>/dev/null | grep '^*' | colrm 1 1)' ) \r\n$(c $(expr $SEC + 1)) $(t '\$ ')"
