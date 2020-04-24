@@ -56,4 +56,4 @@ datetime() {
 	printf "$A"
 }
 
-export PS1="$(c $(expr $SEC - 1)) $(grad $PRI 5 $USER'@'$HOSTNAME) $(t '>>') $(p '$(grad $PRI 6 $(pwd))') \r\n$(c $SEC) $(p '$(grad $PRI 6 $(datetime))')$(f '$(git branch 2>/dev/null | grep '^*' | colrm 1 1)' ) \r\n$(c $(expr $SEC + 1)) $(t '\$ ')"
+export PS1="$(c $(expr $SEC - 1)) $(grad $PRI 5 $USER'@'$HOSTNAME) $(t '>>') $(p '$(grad $PRI 6 $(dirs))') \r\n$(c $SEC) $(p '$(grad $PRI 6 $(datetime))')$(f '$(git branch 2>/dev/null | grep '^*' | colrm 1 1)' ) \r\n$(c $(expr $SEC + 1)) $(t '\$ ')"
