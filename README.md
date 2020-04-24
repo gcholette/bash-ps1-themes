@@ -4,7 +4,7 @@ collection of the themes i created trough time to make my bash command line sexi
 To use, download a theme and execute it in your `.bashrc` file.
 
 #### Teal theme
-![teal_theme](https://raw.githubusercontent.com/showlet/bash_ps1_themes/master/photos/teal_theme2.png)
+![teal_theme](https://raw.githubusercontent.com/showlet/bash_ps1_themes/master/photos/teal_theme1.png)
 
 
 #### Old teal theme
