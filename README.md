@@ -4,7 +4,9 @@
 
 <p align="center">
 Themes for the PS1 bash environment variable, with a color gradient feature.
-  <img src="https://raw.githubusercontent.com/showlet/bash_ps1_themes/master/photos/magenta_gradient3.png"/>
+</p>
+<p align="center">
+    <img src="https://raw.githubusercontent.com/showlet/bash_ps1_themes/master/photos/magenta_gradient3.png"/>
 </p>
   
 ## How to use
