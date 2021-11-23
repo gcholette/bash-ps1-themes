@@ -34,7 +34,7 @@ Find more examples in the `themes/` folders.
 
 ## How it works
 
-To generate gradients with [Bash colors](https://misc.flogisoft.com/bash/tip_colors_and_formatting#colors1), the grad() function spreads x consecutive color ids across a word, starting at a certain color id. 
+To generate gradients with [Bash colors](https://misc.flogisoft.com/bash/tip_colors_and_formatting#colors1), the [grad()](https://github.com/gcholette/bash-ps1-themes/blob/master/util/grad) function spreads x consecutive color ids across a word, starting at a certain color id. 
 
 Usage: `$(grad 83 6 "localhost")` 
 
