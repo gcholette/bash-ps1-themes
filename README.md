@@ -19,18 +19,18 @@ See themes in `./themes/`, try them out by using `source ./themes/Dark-red/dark_
 
 Works only in Bash shells, incompatible with zsh.
 
-#### Retro Teal 1 
+### Examples
+Find more examples in the `themes/` folders.
+
 ![original_grad](https://raw.githubusercontent.com/showlet/bash_ps1_themes/master/photos/original_gradient.png)
 
-#### Retro Teal 2
 ![teal_theme](https://raw.githubusercontent.com/showlet/bash_ps1_themes/master/photos/teal_theme1.png)
 
-#### Retro Pink 1
 ![magenta_grad](https://raw.githubusercontent.com/showlet/bash_ps1_themes/master/photos/magenta_gradient3.png)
 
-#### Dark Red 1
-![image](https://user-images.githubusercontent.com/8711020/142965044-cfb09fba-b78a-4acd-9e0c-91fab0c0126c.png)
+![red_theme](https://user-images.githubusercontent.com/8711020/142965044-cfb09fba-b78a-4acd-9e0c-91fab0c0126c.png)
 
+![teal_light_theme](https://user-images.githubusercontent.com/8711020/142966562-12f60fbc-15f8-4e5f-a78e-5b6c177cac06.png)
 
 ## How it works
 
