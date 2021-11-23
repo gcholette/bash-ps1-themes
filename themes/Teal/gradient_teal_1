@@ -1,0 +1,38 @@
+#!/bin/bash
+grad() {
+  COUNTER=0
+  COLOR=$1
+  COLS=$2
+  TXT=${*:3}
+  MOD="$(($((${#TXT}/${COLS}))*2))"
+  if [ $MOD == 0 ]
+  then
+	  MOD=1
+  fi
+  for (( i=0; i<${#TXT}; i++ )); do  
+    printf "\e[38;5;${COLOR}m${TXT:COUNTER:1}"
+    COUNTER=$(expr $COUNTER + 1)
+    if [ $((i%$MOD)) == 0 ]
+    then 
+      COLOR=$(expr $COLOR + 1)
+    fi
+  done
+}
+
+MAIN_COLOR_CODE=36
+MAIN_COLOR_CODE_1=$(expr $MAIN_COLOR_CODE + 1)
+MAIN_COLOR_CODE_2=$(expr $MAIN_COLOR_CODE + 2)
+
+MAIN_COLOR="\[\033[38;5;${MAIN_COLOR_CODE}m\]";
+MAIN_COLOR_1="\[\033[38;5;${MAIN_COLOR_CODE_1}m\]";
+MAIN_COLOR_2="\[\033[38;5;${MAIN_COLOR_CODE_2}m\]";
+SECONDARY_COLOR="\[\033[38;5;37m\]";
+ACCENT_COLOR="\[\033[38;5;39m\]";
+ACCENT2_COLOR="\[\033[38;5;214m\]";
+TEXT_COLOR="\[\033[38;5;253m\]";
+
+PROMPT_COMMAND='gitbranch=$(git branch 2>/dev/null | grep '^*' | cut -c 2-);\
+FIRST_LINE="$MAIN_COLOR┌───( $(grad 35 5 $USERNAME$USER@HOSTNAME) )-[ ${ACCENT_COLOR}\W ]"; \
+SECOND_LINE="$MAIN_COLOR_1│$SECONDARY_COLOR \d \t $MAIN_COLOR"; \
+LAST_LINE="$MAIN_COLOR_2└─$gitbranch$ACCENT2_COLOR λ $TEXT_COLOR"; \
+PS1="\r\n${FIRST_LINE}\r\n${SECOND_LINE} \r\n${LAST_LINE}" '
