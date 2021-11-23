@@ -32,7 +32,7 @@ ACCENT2_COLOR="\[\033[38;5;214m\]";
 TEXT_COLOR="\[\033[38;5;253m\]";
 
 PROMPT_COMMAND='gitbranch=$(git branch 2>/dev/null | grep '^*' | cut -c 2-);\
-FIRST_LINE="$MAIN_COLOR┌───( $(grad 35 5 $USERNAME$USER@HOSTNAME) )-[ ${ACCENT_COLOR}\W ]"; \
+FIRST_LINE="$MAIN_COLOR┌───( $(grad 35 5 $USERNAME$USER@$HOSTNAME) )-[ ${ACCENT_COLOR}\W ]"; \
 SECOND_LINE="$MAIN_COLOR_1│$SECONDARY_COLOR \d \t $MAIN_COLOR"; \
 LAST_LINE="$MAIN_COLOR_2└─$gitbranch$ACCENT2_COLOR λ $TEXT_COLOR"; \
 PS1="\r\n${FIRST_LINE}\r\n${SECOND_LINE} \r\n${LAST_LINE}" '
