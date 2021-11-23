@@ -28,6 +28,10 @@ Works only in Bash shells, incompatible with zsh.
 #### Retro Pink 1
 ![magenta_grad](https://raw.githubusercontent.com/showlet/bash_ps1_themes/master/photos/magenta_gradient3.png)
 
+#### Dark Red 1
+![image](https://user-images.githubusercontent.com/8711020/142965044-cfb09fba-b78a-4acd-9e0c-91fab0c0126c.png)
+
+
 ## How it works
 
 To generate gradients with [Bash colors](https://misc.flogisoft.com/bash/tip_colors_and_formatting#colors1), the grad() function spreads x consecutive color ids across a word, starting at a certain color id. 
