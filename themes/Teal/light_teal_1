@@ -1,0 +1,13 @@
+#!/usr/bin/bash
+
+MAIN_COLOR="\[\033[38;5;37m\]";
+SECONDARY_COLOR="\[\033[38;5;30m\]";
+ACCENT_COLOR="\[\033[38;5;93m\]";
+TEXT_COLOR="\[\033[38;5;253m\]";
+
+PROMPT_COMMAND='pwd2=$(sed "s:\([^/]\)[^/]*/:\1/:g" <<<$PWD);\
+gitbranch=$(git branch 2>/dev/null | grep '^*' | cut -c 2-);\
+FIRST_LINE="$MAIN_COLOR┌───( $ACCENT_COLOR$USERNAME$USER $MAIN_COLOR)-[ $ACCENT_COLOR$pwd2 $MAIN_COLOR]"; \
+SECOND_LINE="│$SECONDARY_COLOR \d \t $MAIN_COLOR"; \
+LAST_LINE="└─$gitbranch$ACCENT_COLOR λ $TEXT_COLOR"; \
+PS1="\r\n${FIRST_LINE}\r\n${SECOND_LINE} \r\n${LAST_LINE}" '
