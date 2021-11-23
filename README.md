@@ -32,6 +32,8 @@ Find more examples in the `themes/` folders.
 
 ![teal_light_theme](https://user-images.githubusercontent.com/8711020/142966562-12f60fbc-15f8-4e5f-a78e-5b6c177cac06.png)
 
+![image](https://user-images.githubusercontent.com/8711020/142968847-53f5aaf3-0ae2-49db-ac39-90a41b331f04.png)
+
 ## How it works
 
 To generate gradients with [Bash colors](https://misc.flogisoft.com/bash/tip_colors_and_formatting#colors1), the [grad()](https://github.com/gcholette/bash-ps1-themes/blob/master/util/grad) function spreads x consecutive color ids across a word, starting at a certain color id. 
