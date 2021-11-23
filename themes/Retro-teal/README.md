@@ -1,4 +1,4 @@
-# Retro Pink Themes
+# Retro Teal Themes
 
 #### Retro Teal 1 
 ![original_grad](https://raw.githubusercontent.com/showlet/bash_ps1_themes/master/photos/original_gradient.png)
