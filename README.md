@@ -4,6 +4,7 @@
 
 <p align="center">
 Themes for the PS1 bash environment variable, with a color gradient feature.
+  <img src="https://raw.githubusercontent.com/showlet/bash_ps1_themes/master/photos/magenta_gradient3.png"/>
 </p>
   
 ## How to use
@@ -12,16 +13,17 @@ For persistent use, copy the theme's source in your `.bashrc`.
 
 The theme files have `export PS1=...` at the end, so they only need to be executed to apply the theme to the current shell.
 
-#### Teal theme
-![teal_theme](https://raw.githubusercontent.com/showlet/bash_ps1_themes/master/photos/teal_theme1.png)
+See themes in `./themes/`, try them out by using `source ./themes/Dark-red/dark_red_1`
 
+Works only in Bash shells, incompatible with zsh.
 
-#### Old teal theme
-original theme created around 2017/2018
-
+#### Retro Teal 1 
 ![original_grad](https://raw.githubusercontent.com/showlet/bash_ps1_themes/master/photos/original_gradient.png)
 
-#### Magenta theme
+#### Retro Teal 2
+![teal_theme](https://raw.githubusercontent.com/showlet/bash_ps1_themes/master/photos/teal_theme1.png)
+
+#### Retro Pink 1
 ![magenta_grad](https://raw.githubusercontent.com/showlet/bash_ps1_themes/master/photos/magenta_gradient3.png)
 
 ## How it works
