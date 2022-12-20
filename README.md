@@ -11,11 +11,9 @@ Themes for the PS1 bash environment variable, with a color gradient feature.
   
 ## How to use
 
-For persistent use, copy the theme's source in your `.bashrc`.
+See themes in `./themes/`, try them out by using `source ./themes/Dark-red/dark_red_1`. Or demo them all with `./test_all_themes`
 
-The theme files have `export PS1=...` at the end, so they only need to be executed to apply the theme to the current shell.
-
-See themes in `./themes/`, try them out by using `source ./themes/Dark-red/dark_red_1`
+For persistent use, source the theme in your `.bashrc`. For instance, at the end of your `.bashrc`, write `source ~/Documents/bash-ps1-themes/themes/teal_cyber_3`. Replace `~/Documents` with whatever path you store `bash-ps1-themes/` in.
 
 Works only in Bash shells, incompatible with zsh.
 
@@ -36,8 +34,12 @@ Find more examples in the `themes/` folders.
 
 ## How it works
 
-To generate gradients with [Bash colors](https://misc.flogisoft.com/bash/tip_colors_and_formatting#colors1), the [grad()](https://github.com/gcholette/bash-ps1-themes/blob/master/util/grad) function spreads x consecutive color ids across a word, starting at a certain color id. 
+In the `lib/` folder, the `lib` file contains two gradient functions. One that works with rgb codes and one that works with bash 256 color codes. 
 
-Usage: `$(grad 83 6 "localhost")` 
+The themes work with the PROMPT_COMMAND and PS1 environment variables. The PROMPT_COMMAND invokes a function that in turn invokes other functions to build a PS1 variable. The scripts generally require some functions from the `lib` file instead of being completely standalone. But you can easily copy over most of the functions in your `.bashrc` file if you wish to, this is a small codebase.
 
-![image](https://user-images.githubusercontent.com/8711020/142923686-7d3c7072-3afe-46c1-a846-f7229b726c6f.png)
+### Usage of lib functions 
+
+`rgb_gradient "255;0;0" "0;0;255" "localhost"`
+
+`code_gradient 83 6 "localhost"` 

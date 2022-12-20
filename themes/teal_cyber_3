@@ -2,19 +2,18 @@
 scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
 source $scriptDir'/../lib/lib'
 
-primary_rgb="27;207;198"
-secondary_rgb="102;38;252"
-accent_rgb="207;171;27"
-text_rgb="210;210;210"
+color_1="27;207;198"
+color_2="41;130;255"
+color_2_light="79;166;247"
+color_3="207;171;27"
+text_color="210;210;210"
 
 prompt_cmd() {
-  gitbranch='$(git branch 2>/dev/null | grep '^*' | cut -c 2-)'
+  FIRST_LINE="$(rgb_gradient $color_1 $color_2 '┌───( '$USERNAME$USER@$HOSTNAME' )-[ '$(basename $PWD)' ]')"
 
-  FIRST_LINE="$(rgb_gradient $primary_rgb $secondary_rgb '┌───( '$USERNAME$USER@$HOSTNAME' )-[ '$(basename $PWD)' ]')"
+  SECOND_LINE="$(ansi $color_1)│ $(short_datetime) $(ansi $color1)"
 
-  SECOND_LINE="$(ansi $primary_rgb)│ \d \t $(ansi $primary_rgb)"
-
-  LAST_LINE="$(ansi $primary_rgb)└─$gitbranch$(ansi $accent_rgb) λ $(ansi $text_rgb)"
+  LAST_LINE="$(ansi $color_1)└─$(ansi $color_2_light)$(gitbranch)$(ansi $color_3) λ $(ansi $text_color)"
 
   PS1="\r\n${FIRST_LINE}\r\n${SECOND_LINE} \r\n${LAST_LINE}"
 }
