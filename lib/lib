@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# Inserts a "255;255;255" formatted code inside ansi color code
+ansi() {
+  printf "\[\033[38;2;${1}m\]"
+}
+
+# Gradient over start and end rgb string formatted as "255;255;255"
+rgb_gradient() {
+  start_color=$1
+  end_color=$2
+  str=$3
+  str_len=${#str}
+
+  IFS=';' read r1 g1 b1 <<< "$start_color"
+  IFS=';' read r2 g2 b2 <<< "$end_color"
+
+  dr=$((r2 - r1))
+  dg=$((g2 - g1))
+  db=$((b2 - b1))
+
+  rstep=$((dr / str_len))
+  gstep=$((dg / str_len))
+  bstep=$((db / str_len))
+
+  for i in $(seq 0 $((str_len - 1))); do
+    r3=$((r1 + rstep*i))
+    g3=$((g1 + gstep*i))
+    b3=$((b1 + bstep*i))
+    printf "\[\033[38;2;${r3};${g3};${b3}m\]${str:i:1}"
+  done
+  printf "\[\033[0m\]"
+}
+
+# Gradient over bash 256 color codes, 
+# takes starting color code and number of codes to gradient over
+code_gradient() {
+  COUNTER=0
+  COLOR=$1
+  COLS=$2
+  TXT=${*:3}
+  MOD="$(($((${#TXT}/${COLS}))*2))"
+  if [ $MOD == 0 ]
+  then
+	  MOD=1
+  fi
+  for (( i=0; i<${#TXT}; i++ )); do  
+    printf "\e[38;5;${COLOR}m${TXT:COUNTER:1}"
+    COUNTER=$(expr $COUNTER + 1)
+    if [ $((i%$MOD)) == 0 ]
+    then 
+      COLOR=$(expr $COLOR + 1)
+    fi
+  done
+}

@@ -1,6 +1,6 @@
 #!/bin/bash
 scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
-source $scriptDir'/../../util/grad2'
+source $scriptDir'/../../lib/lib'
 
 PRIMARY="\[\e[38;5;37m\]"
 SECONDARY='\[\033[38;5;129m\]'
@@ -20,4 +20,4 @@ t() {
   printf "${THIRD}${TEXT}${NC}"
 }
 
-export PS1="\[\e[30;48;5;37m\]  ${NC} $(grad2 '3,252,177' '161,3,252' $USERNAME@$HOSTNAME) $(s '>>=') $(s '\w') \r\n\[\e[30;48;5;37m\]  ${NC} \[\e[38;5;37m\]\d \[\e[38;5;31m\]\t$( s '$(git branch 2>/dev/null | grep '^*' | cut -c 2-)' )$(t ' λ') "
+export PS1="\[\e[30;48;5;37m\]  ${NC} $(rgb_gradient '3;252;177' '161;3;252' $USERNAME@$HOSTNAME) $(s '>>=') $(s '\w') \r\n\[\e[30;48;5;37m\]  ${NC} \[\e[38;5;37m\]\d \[\e[38;5;31m\]\t$( s '$(git branch 2>/dev/null | grep '^*' | cut -c 2-)' )$(t ' λ') "

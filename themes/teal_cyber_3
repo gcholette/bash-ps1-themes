@@ -1,0 +1,22 @@
+#!/bin/bash
+scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
+source $scriptDir'/../lib/lib'
+
+primary_rgb="27;207;198"
+secondary_rgb="102;38;252"
+accent_rgb="207;171;27"
+text_rgb="210;210;210"
+
+prompt_cmd() {
+  gitbranch='$(git branch 2>/dev/null | grep '^*' | cut -c 2-)'
+
+  FIRST_LINE="$(rgb_gradient $primary_rgb $secondary_rgb '┌───( '$USERNAME$USER@$HOSTNAME' )-[ '$(basename $PWD)' ]')"
+
+  SECOND_LINE="$(ansi $primary_rgb)│ \d \t $(ansi $primary_rgb)"
+
+  LAST_LINE="$(ansi $primary_rgb)└─$gitbranch$(ansi $accent_rgb) λ $(ansi $text_rgb)"
+
+  PS1="\r\n${FIRST_LINE}\r\n${SECOND_LINE} \r\n${LAST_LINE}"
+}
+
+export PROMPT_COMMAND='prompt_cmd'
