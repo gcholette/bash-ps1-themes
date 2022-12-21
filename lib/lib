@@ -1,39 +1,62 @@
 #!/bin/bash
 
 gitbranch() {
-  printf '$(git branch 2>/dev/null | grep '^*' | cut -c 2-)'
+  branch_id=$(git branch 2>/dev/null | grep '^*' | cut -c 2-)
+  if [ $branch_id ]
+  then
+    printf $branch_id
+  fi
 }
 
 # Inserts a "255;255;255" formatted code inside ansi color code
-ansi() {
+rgb_fg() {
   printf "\[\033[38;2;${1}m\]"
+}
+
+rgb_bg() {
+  printf "\[\033[48;2;${1}m\]"
+}
+
+xterm_fg() {
+  printf "\[\033[38;5;${1}m\]"
+}
+
+xterm_bg() {
+  printf "\[\033[48;5;${1}m\]"
+}
+
+no_color() {
+  printf "\[\033[0m\]"
 }
 
 # Gradient over start and end rgb string formatted as "255;255;255"
 rgb_gradient() {
   start_color=$1
   end_color=$2
-  str=$3
+  str=${*:3}
   str_len=${#str}
 
-  IFS=';' read r1 g1 b1 <<< "$start_color"
-  IFS=';' read r2 g2 b2 <<< "$end_color"
+  if [ $str_len != 0 ] 
+  then 
+    IFS=';' read r1 g1 b1 <<< "$start_color"
+    IFS=';' read r2 g2 b2 <<< "$end_color"
 
-  dr=$((r2 - r1))
-  dg=$((g2 - g1))
-  db=$((b2 - b1))
+    dr=$((r2 - r1))
+    dg=$((g2 - g1))
+    db=$((b2 - b1))
 
-  rstep=$((dr / str_len))
-  gstep=$((dg / str_len))
-  bstep=$((db / str_len))
+    rstep=$((dr / str_len))
+    gstep=$((dg / str_len))
+    bstep=$((db / str_len))
 
-  for i in $(seq 0 $((str_len - 1))); do
-    r3=$((r1 + rstep*i))
-    g3=$((g1 + gstep*i))
-    b3=$((b1 + bstep*i))
-    printf "\[\033[38;2;${r3};${g3};${b3}m\]${str:i:1}"
-  done
-  printf "\[\033[0m\]"
+    for i in $(seq 0 $((str_len - 1))); do
+      r3=$((r1 + rstep*i))
+      g3=$((g1 + gstep*i))
+      b3=$((b1 + bstep*i))
+      printf "\[\033[38;2;${r3};${g3};${b3}m\]${str:i:1}"
+    done
+    printf "\[\033[0m\]"
+  fi
 }
 
 # Gradient over bash 256 color codes, 
@@ -46,7 +69,7 @@ code_gradient() {
   MOD="$(($((${#TXT}/${COLS}))*2))"
   if [ $MOD == 0 ]
   then
-	  MOD=1
+	  mod=1
   fi
   for (( i=0; i<${#TXT}; i++ )); do  
     printf "\e[38;5;${COLOR}m${TXT:COUNTER:1}"

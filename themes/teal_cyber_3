@@ -2,20 +2,27 @@
 scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
 source $scriptDir'/../lib/lib'
 
-color_1="27;207;198"
-color_2="41;130;255"
-color_2_light="79;166;247"
-color_3="207;171;27"
-text_color="210;210;210"
+rgb_1="27;207;198"
+rgb_1_1="34;197;230"
+rgb_1_2="73;136;252"
+rgb_2="55;172;240"
+rgb_3="207;171;27"
+rgb_4="143;152;255"
+rgb_text="210;210;210"
 
 prompt_cmd() {
-  FIRST_LINE="$(rgb_gradient $color_1 $color_2 '┌───( '$USERNAME$USER@$HOSTNAME' )-[ '$(basename $PWD)' ]')"
+  TMP_GIT_BRANCH="$(gitbranch)"
+  if [ $TMP_GIT_BRANCH ]
+  then
+    BRANCH_SECTION="( $TMP_GIT_BRANCH )"
+  else
+    BRANCH_SECTION=""
+  fi
+  LINE_1="$(rgb_gradient $rgb_1 $rgb_1_2 '┌───( '$USERNAME$USER@$HOSTNAME' )-[ '$(basename $PWD)' ]')"
+  LINE_2="$(rgb_fg $rgb_1_1)│ $(short_datetime)"
+  LINE_3="$(rgb_fg $rgb_2)└─$BRANCH_SECTION$(rgb_fg $rgb_3) λ $(rgb_fg $rgb_text)"
 
-  SECOND_LINE="$(ansi $color_1)│ $(short_datetime) $(ansi $color1)"
-
-  LAST_LINE="$(ansi $color_1)└─$(ansi $color_2_light)$(gitbranch)$(ansi $color_3) λ $(ansi $text_color)"
-
-  PS1="\r\n${FIRST_LINE}\r\n${SECOND_LINE} \r\n${LAST_LINE}"
+  PS1="\r\n${LINE_1}\r\n${LINE_2}\r\n${LINE_3}"
 }
 
 export PROMPT_COMMAND='prompt_cmd'
