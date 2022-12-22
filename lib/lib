@@ -92,6 +92,6 @@ short_datetime() {
 }
 
 short_time() {
-  TMP_TIME=$(date "%T")
+  TMP_TIME=$(date "+%T")
 	printf "$TMP_TIME"
 }

@@ -5,7 +5,7 @@ themesDir="${scriptDir}/themes"
 clear
 
 printf "\033[48;5;4m"
-echo -e "                      Prompt demos                     \033[0m"
+echo -e "                      Themes demo                     \033[0m"
 for FILE in $(ls $themesDir); 
   do 
   if [ $FILE != 'README.md' ] && [ $FILE != 'to_refactor' ]
