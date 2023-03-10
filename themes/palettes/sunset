@@ -1,0 +1,9 @@
+#!/bin/bash
+color_xterm=202
+color_1="#f7a305"
+color_1_1="#f77e05"
+color_1_2="#f75e05"
+color_2="#e35239"
+color_3="#d700ff"
+color_accent="#c929ff"
+color_text="#d2d2d2"

@@ -1,0 +1,6 @@
+#!/bin/bash
+scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
+source $scriptDir'/../lib/lib'
+
+source $scriptDir'/palettes/sunset'
+source $scriptDir'/generic/3_line_cyber'

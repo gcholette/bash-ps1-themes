@@ -8,6 +8,28 @@ gitbranch() {
   fi
 }
 
+# turns the #123b84 color codes to 203;133;54 rgb codes
+hex_color_to_rgb() {
+  hex=${1#"#"}
+
+  r=$((0x${hex:0:2}))
+  g=$((0x${hex:2:2}))
+  b=$((0x${hex:4:2}))
+
+  printf "%d;%d;%d\n" "$r" "$g" "$b"
+}
+
+# turns all hex symbols to rgb
+prepare_colors() {
+  color_1=$(hex_color_to_rgb $color_1)
+  color_1_1=$(hex_color_to_rgb $color_1_1)
+  color_1_2=$(hex_color_to_rgb $color_1_2)
+  color_2=$(hex_color_to_rgb $color_2)
+  color_3=$(hex_color_to_rgb $color_3)
+  color_accent=$(hex_color_to_rgb $color_accent)
+  color_text=$(hex_color_to_rgb $color_text)
+}
+
 # Inserts a "255;255;255" formatted code inside ansi color code
 rgb_fg() {
   printf "\[\033[38;2;${1}m\]"

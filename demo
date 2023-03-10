@@ -8,7 +8,7 @@ printf "\033[48;5;4m"
 echo -e "                      Themes demo                     \033[0m"
 for FILE in $(ls $themesDir); 
   do 
-  if [ $FILE != 'README.md' ] && [ $FILE != 'to_refactor' ]
+  if [ $FILE != 'README.md' ] && [ $FILE != 'to_refactor' ] && [ $FILE != 'generic' ] && [ $FILE != 'non_generic' ] && [ $FILE != 'palettes' ]
   then
     printf "\033[3m"
     printf "\033[48;5;17m"
