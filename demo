@@ -1,25 +1,93 @@
 #!/bin/bash
 scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
 themesDir="${scriptDir}/themes"
+palettesDir="${scriptDir}/themes/palettes"
+source $scriptDir'/lib/lib'
+
+center_string() {
+  local string="$1"
+  local padding=$(( (64 - ${#string}) / 2 ))
+  printf '%*s%s%*s\n' $padding '' "$string" $padding ''
+}
 
 clear
 
 printf "\033[48;5;4m"
-echo -e "                      Themes demo                     \033[0m"
+center_string Palettes
+no_color_esc
+
+for FILE in $(ls $palettesDir); 
+  do 
+  if [ $FILE != 'README.md' ]
+  then
+    printf "\033[3m"
+    printf "\033[48;5;17m"
+    center_string $FILE
+    no_color_esc
+    source $palettesDir/$FILE
+
+    prepare_colors
+
+    echo "Gradient"
+    printf "$(rgb_gradient_esc $color_1 $color_3 '       ')  "
+    echo
+    echo
+
+    echo "1 2 3 "
+    printf "$(rgb_bg_esc $color_1) $(no_color_esc) "
+    printf "$(rgb_bg_esc $color_2) $(no_color_esc) "
+    printf "$(rgb_bg_esc $color_3) $(no_color_esc)  "
+    echo
+    echo
+
+
+    echo "1 4 5 "
+    printf "$(rgb_bg_esc $color_1) $(no_color_esc) "
+    printf "$(rgb_bg_esc $color_4) $(no_color_esc) "
+    printf "$(rgb_bg_esc $color_5) $(no_color_esc)  "
+    echo
+    echo
+
+    echo "X Y Z "
+    printf "$(xterm_bg_esc $color_xterm) $(no_color_esc) "
+    printf "$(xterm_bg_esc $((color_xterm + 1))) $(no_color_esc) "
+    printf "$(xterm_bg_esc $((color_xterm + 2))) $(no_color_esc)  "
+
+    echo
+    echo
+    echo "Accent "
+    printf "$(rgb_bg_esc $color_accent) $(no_color_esc) $(rgb_fg_esc $color_accent) $"
+
+    echo
+    echo
+    printf "$(rgb_fg_esc $color_text)text color $(no_color_esc) "
+
+
+
+    no_color_esc
+    echo
+    echo
+  fi
+done
+
+printf "\033[48;5;4m"
+center_string Themes Demo
+no_color_esc
+
 for FILE in $(ls $themesDir); 
   do 
   if [ $FILE != 'README.md' ] && [ $FILE != 'to_refactor' ] && [ $FILE != 'generic' ] && [ $FILE != 'non_generic' ] && [ $FILE != 'palettes' ]
   then
     printf "\033[3m"
     printf "\033[48;5;17m"
-    echo -e "        ${FILE}        "
-    printf "\033[0m"
+    center_string $FILE
+    no_color_esc
     source $themesDir/$FILE
     eval $PROMPT_COMMAND
     PS1_EVAL=$(eval "echo \"$PS1\"")
     PS1_EVAL=$(echo "$PS1_EVAL" | sed 's/\\\[//g;s/\\\]//g')
     echo -e "$PS1_EVAL"
-    printf "\033[0m"
+    no_color_esc
     echo
     echo
   fi
