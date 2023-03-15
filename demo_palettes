@@ -22,52 +22,32 @@ for FILE in $(ls $palettesDir);
 
     prepare_colors
 
-    echo "Gradient 1>3"
-    printf "$(rgb_gradient_esc $color_1 $color_3 '          ')  "
-    printf "$(rgb_gradient_esc $color_1 $color_3 '       ')  "
-    printf "$(rgb_gradient_esc $color_1 $color_3 '    ')  "
-    printf "$(rgb_gradient_esc $color_1 $color_3 '   ')  "
-    echo
-    echo
+    printf '\n'
+    printf "Primary & Secondary\n\n"
+    printf "$(rgb_bg_esc $color_primary)  $(no_color_esc)  "
+    printf "$(rgb_bg_esc $color_secondary)  $(no_color_esc)      -  "
 
-    echo "1 2 3 "
-    printf "$(rgb_bg_esc $color_1) $(no_color_esc) "
-    printf "$(rgb_bg_esc $color_2) $(no_color_esc) "
-    printf "$(rgb_bg_esc $color_3) $(no_color_esc)  "
+    printf "$(rgb_gradient_esc $color_primary $color_secondary '   ')  "
+    printf "$(rgb_gradient_esc $color_primary $color_secondary '    ')  "
+    printf "$(rgb_gradient_esc $color_primary $color_secondary '       ')  "
+    printf "$(rgb_gradient_esc $color_primary $color_secondary '          ')  "
+    printf "$(rgb_gradient_esc $color_primary $color_secondary '                ')  "
+    printf '\n\n\n'
 
-    printf "$(rgb_bg_esc $color_1) $(no_color_esc)"
-    printf "$(rgb_bg_esc $color_2) $(no_color_esc)"
-    printf "$(rgb_bg_esc $color_3) $(no_color_esc)"
-    echo
-    echo
+    printf "Primary Variants\n\n"
+    printf "$(rgb_bg_esc $color_primary_variant_1)  $(no_color_esc)  "
+    printf "$(rgb_bg_esc $color_primary_variant_2)  $(no_color_esc)  "
+    printf "$(rgb_bg_esc $color_primary_variant_3)  $(no_color_esc)  -  "
 
-    echo "1 4 5 "
-    printf "$(rgb_bg_esc $color_1) $(no_color_esc) "
-    printf "$(rgb_bg_esc $color_4) $(no_color_esc) "
-    printf "$(rgb_bg_esc $color_5) $(no_color_esc)  "
+    printf "$(rgb_bg_esc $color_primary_variant_1) $(no_color_esc)"
+    printf "$(rgb_bg_esc $color_primary_variant_2) $(no_color_esc)"
+    printf "$(rgb_bg_esc $color_primary_variant_3) $(no_color_esc)"
+    printf '\n\n\n'
 
-    printf "$(rgb_bg_esc $color_1) $(no_color_esc)"
-    printf "$(rgb_bg_esc $color_4) $(no_color_esc)"
-    printf "$(rgb_bg_esc $color_5) $(no_color_esc)"
-    echo
-    echo
+    printf "Accent\n\n"
+    printf "$(rgb_bg_esc $color_accent)  $(no_color_esc) $(rgb_fg_esc $color_accent) $ λ "
+    printf '\n\n\n'
 
-    echo "X Y Z "
-    printf "$(xterm_bg_esc $color_xterm) $(no_color_esc) "
-    printf "$(xterm_bg_esc $((color_xterm + 1))) $(no_color_esc) "
-    printf "$(xterm_bg_esc $((color_xterm + 2))) $(no_color_esc)  "
-
-    printf "$(xterm_bg_esc $color_xterm) $(no_color_esc)"
-    printf "$(xterm_bg_esc $((color_xterm + 1))) $(no_color_esc)"
-    printf "$(xterm_bg_esc $((color_xterm + 2))) $(no_color_esc)"
-
-    echo
-    echo
-    echo "Accent "
-    printf "$(rgb_bg_esc $color_accent) $(no_color_esc) $(rgb_fg_esc $color_accent) $"
-
-    echo
-    echo
     printf "$(rgb_fg_esc $color_text)text color $(no_color_esc) "
 
     no_color_esc
@@ -75,6 +55,3 @@ for FILE in $(ls $palettesDir);
     echo
   fi
 done
-
-printf "\033[48;5;17m"
-echo -e "                                                       \033[0m"

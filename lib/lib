@@ -8,6 +8,14 @@ gitbranch() {
   fi
 }
 
+function current_user() {
+  if [ -n "$USER" ]; then
+    printf "$USER"
+  else
+    printf "$USERNAME"
+  fi
+}
+
 # turns the #123b84 color codes to 203;133;54 rgb codes
 hex_color_to_rgb() {
   hex=${1#"#"}
@@ -21,12 +29,12 @@ hex_color_to_rgb() {
 
 # turns all hex symbols to rgb
 prepare_colors() {
-  color_1=$(hex_color_to_rgb $color_1)
-  color_4=$(hex_color_to_rgb $color_4)
-  color_5=$(hex_color_to_rgb $color_5)
-  color_2=$(hex_color_to_rgb $color_2)
-  color_3=$(hex_color_to_rgb $color_3)
+  color_primary=$(hex_color_to_rgb $color_primary)
+  color_secondary=$(hex_color_to_rgb $color_secondary)
   color_accent=$(hex_color_to_rgb $color_accent)
+  color_primary_variant_1=$(hex_color_to_rgb $color_primary_variant_1)
+  color_primary_variant_2=$(hex_color_to_rgb $color_primary_variant_2)
+  color_primary_variant_3=$(hex_color_to_rgb $color_primary_variant_3)
   color_text=$(hex_color_to_rgb $color_text)
 }
 
@@ -87,7 +95,7 @@ rgb_gradient() {
     gstep=$((dg / str_len))
     bstep=$((db / str_len))
 
-    for i in $(seq 0 $((str_len - 1))); do
+    for i in $(seq 0 $((str_len))); do
       r3=$((r1 + rstep*i))
       g3=$((g1 + gstep*i))
       b3=$((b1 + bstep*i))
@@ -117,16 +125,10 @@ rgb_gradient_esc() {
     gstep=$((dg / str_len))
     bstep=$((db / str_len))
 
-    # echo "start: ${r1} ${g1} ${b1}"
-
-    # echo "end: ${r2} ${g2} ${b2}"
-
-
     for i in $(seq 0 $((str_len))); do
       r3=$((r1 + rstep*i))
       g3=$((g1 + gstep*i))
       b3=$((b1 + bstep*i))
-      # echo "${r3} ${g3} ${b3}"
       printf "\033[48;2;${r3};${g3};${b3}m${str:i:1}"
     done
     printf "\033[0m"
@@ -172,6 +174,6 @@ short_time() {
 
 center_string() {
   local string="$1"
-  local padding=$(( (64 - ${#string}) / 2 ))
+  local padding=$(( ($COLUMNS - ${#string}) / 2 ))
   printf '%*s%s%*s\n' $padding '' "$string" $padding ''
 }

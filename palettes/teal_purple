@@ -1,9 +1,9 @@
 #!/bin/bash
-color_xterm=43
-color_1="#1bcfc6"
-color_2="#4e99de"
-color_3="#954fff"
-color_4="#1ba5cf"
-color_5="#1d8df5"
+color_primary="#1bcfc6"
+color_secondary="#954fff"
 color_accent="#cfab1b"
+color_primary_variant_1="#00d7af"
+color_primary_variant_2="#00d7d7"
+color_primary_variant_3="#00d7ff"
 color_text="#d2d2d2"
+
