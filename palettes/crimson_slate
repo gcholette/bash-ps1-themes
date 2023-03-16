@@ -1,0 +1,9 @@
+#!/bin/bash
+color_primary="#A00000"
+color_secondary="#4A4A4A"
+color_accent="#6B6B6B"
+color_primary_variant_1="#900000"
+color_primary_variant_2="#800000"
+color_primary_variant_3="#700000"
+color_text="#bdbdbd"
+

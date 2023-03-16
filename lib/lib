@@ -72,7 +72,7 @@ no_color() {
 }
 
 no_color_esc() {
-  printf "\033[0m"
+  printf "\033[0m\033[49m"
 }
 
 # Gradient over start and end rgb string formatted as "255;255;255"
@@ -172,8 +172,14 @@ short_time() {
 	printf "$TMP_TIME"
 }
 
+# center_string() {
+#   local string="$1"
+#   local padding=$(( ($COLUMNS - ${#string}) / 2 ))
+#   printf '%*s%s%*s\n' $padding '' "$string" $padding ''
+# }
+
 center_string() {
   local string="$1"
-  local padding=$(( ($COLUMNS - ${#string}) / 2 ))
+  local padding=$(( ($(tput cols) - ${#string}) / 2))
   printf '%*s%s%*s\n' $padding '' "$string" $padding ''
 }

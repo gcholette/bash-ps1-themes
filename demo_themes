@@ -29,4 +29,5 @@ for FILE in $(ls $themesDir);
 done
 
 printf "\033[48;5;17m"
-echo -e "                                                       \033[0m"
+center_string ''
+no_color_esc

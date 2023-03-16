@@ -18,21 +18,22 @@ for FILE in $(ls $palettesDir);
     printf "\033[48;5;17m"
     center_string $FILE
     no_color_esc
+    echo 
     source $palettesDir/$FILE
 
     prepare_colors
 
-    printf '\n'
     printf "Primary & Secondary\n\n"
-    printf "$(rgb_bg_esc $color_primary)  $(no_color_esc)  "
-    printf "$(rgb_bg_esc $color_secondary)  $(no_color_esc)      -  "
+    printf "$(rgb_bg_esc $color_primary)   $(no_color_esc)  "
+    printf "$(rgb_bg_esc $color_secondary)   $(no_color_esc)      \n\n"
 
-    printf "$(rgb_gradient_esc $color_primary $color_secondary '   ')  "
-    printf "$(rgb_gradient_esc $color_primary $color_secondary '    ')  "
-    printf "$(rgb_gradient_esc $color_primary $color_secondary '       ')  "
-    printf "$(rgb_gradient_esc $color_primary $color_secondary '          ')  "
-    printf "$(rgb_gradient_esc $color_primary $color_secondary '                ')  "
-    printf '\n\n\n'
+    printf "Gradient Primary to Secondary\n\n"
+
+    printf "$(rgb_gradient_esc $color_primary $color_secondary '   ')  $(no_color_esc)"
+    printf "$(rgb_gradient_esc $color_primary $color_secondary '    ')  $(no_color_esc)"
+    printf "$(rgb_gradient_esc $color_primary $color_secondary '       ')  $(no_color_esc) \n\n"
+    printf "$(rgb_gradient_esc $color_primary $color_secondary '          ')  $(no_color_esc)"
+    printf "$(rgb_gradient_esc $color_primary $color_secondary '                ')  $(no_color_esc)\n\n"
 
     printf "Primary Variants\n\n"
     printf "$(rgb_bg_esc $color_primary_variant_1)  $(no_color_esc)  "
@@ -42,11 +43,11 @@ for FILE in $(ls $palettesDir);
     printf "$(rgb_bg_esc $color_primary_variant_1) $(no_color_esc)"
     printf "$(rgb_bg_esc $color_primary_variant_2) $(no_color_esc)"
     printf "$(rgb_bg_esc $color_primary_variant_3) $(no_color_esc)"
-    printf '\n\n\n'
+    printf '\n\n'
 
     printf "Accent\n\n"
     printf "$(rgb_bg_esc $color_accent)  $(no_color_esc) $(rgb_fg_esc $color_accent) $ λ "
-    printf '\n\n\n'
+    printf '\n\n'
 
     printf "$(rgb_fg_esc $color_text)text color $(no_color_esc) "
 
