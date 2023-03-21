@@ -29,13 +29,18 @@ hex_color_to_rgb() {
 
 # turns all hex symbols to rgb
 prepare_colors() {
-  color_primary=$(hex_color_to_rgb $color_primary)
-  color_secondary=$(hex_color_to_rgb $color_secondary)
-  color_accent=$(hex_color_to_rgb $color_accent)
-  color_primary_variant_1=$(hex_color_to_rgb $color_primary_variant_1)
-  color_primary_variant_2=$(hex_color_to_rgb $color_primary_variant_2)
-  color_primary_variant_3=$(hex_color_to_rgb $color_primary_variant_3)
-  color_text=$(hex_color_to_rgb $color_text)
+  palette_primary=$(hex_color_to_rgb $palette_primary)
+  palette_primary_dark=$(hex_color_to_rgb $palette_primary_dark)
+  palette_secondary=$(hex_color_to_rgb $palette_secondary)
+  palette_secondary_dark=$(hex_color_to_rgb $palette_secondary_dark)
+  palette_accent=$(hex_color_to_rgb $palette_accent)
+  palette_accent_dark=$(hex_color_to_rgb $palette_accent_dark)
+  palette_gradient_start=$(hex_color_to_rgb $palette_gradient_start)
+  palette_gradient_end=$(hex_color_to_rgb $palette_gradient_end)
+  palette_variant_1=$(hex_color_to_rgb $palette_variant_1)
+  palette_variant_2=$(hex_color_to_rgb $palette_variant_2)
+  palette_variant_3=$(hex_color_to_rgb $palette_variant_3)
+  palette_text=$(hex_color_to_rgb $palette_text)
 }
 
 # Inserts a "255;255;255" formatted code inside ansi color code

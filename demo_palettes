@@ -24,32 +24,42 @@ for FILE in $(ls $palettesDir);
     prepare_colors
 
     printf "Primary & Secondary\n\n"
-    printf "$(rgb_bg_esc $color_primary)   $(no_color_esc)  "
-    printf "$(rgb_bg_esc $color_secondary)   $(no_color_esc)      \n\n"
+    printf "Regular  "
+    printf "$(rgb_bg_esc $palette_primary)   $(no_color_esc)  "
+    printf "$(rgb_bg_esc $palette_secondary)   $(no_color_esc)      \n\n"
+    printf "Dark     "
+    printf "$(rgb_bg_esc $palette_primary_dark)   $(no_color_esc)  "
+    printf "$(rgb_bg_esc $palette_secondary_dark)   $(no_color_esc)      \n\n"
 
-    printf "Gradient Primary to Secondary\n\n"
+    printf "Gradient\n\n"
 
-    printf "$(rgb_gradient_esc $color_primary $color_secondary '   ')  $(no_color_esc)"
-    printf "$(rgb_gradient_esc $color_primary $color_secondary '    ')  $(no_color_esc)"
-    printf "$(rgb_gradient_esc $color_primary $color_secondary '       ')  $(no_color_esc) \n\n"
-    printf "$(rgb_gradient_esc $color_primary $color_secondary '          ')  $(no_color_esc)"
-    printf "$(rgb_gradient_esc $color_primary $color_secondary '                ')  $(no_color_esc)\n\n"
+    printf "$(rgb_gradient_esc $palette_gradient_start $palette_gradient_end ' ')  $(no_color_esc)"
+    printf "$(rgb_gradient_esc $palette_gradient_start $palette_gradient_end '  ')  $(no_color_esc)"
+    printf "$(rgb_gradient_esc $palette_gradient_start $palette_gradient_end '   ')  $(no_color_esc)"
+    printf "$(rgb_gradient_esc $palette_gradient_start $palette_gradient_end '    ')  $(no_color_esc)"
+    printf "$(rgb_gradient_esc $palette_gradient_start $palette_gradient_end '       ')  $(no_color_esc) \n\n"
+    printf "$(rgb_gradient_esc $palette_gradient_start $palette_gradient_end '          ')  $(no_color_esc)"
+    printf "$(rgb_gradient_esc $palette_gradient_start $palette_gradient_end '                ')  $(no_color_esc)\n\n"
 
     printf "Primary Variants\n\n"
-    printf "$(rgb_bg_esc $color_primary_variant_1)  $(no_color_esc)  "
-    printf "$(rgb_bg_esc $color_primary_variant_2)  $(no_color_esc)  "
-    printf "$(rgb_bg_esc $color_primary_variant_3)  $(no_color_esc)  -  "
+    printf "$(rgb_bg_esc $palette_variant_1)  $(no_color_esc)  "
+    printf "$(rgb_bg_esc $palette_variant_2)  $(no_color_esc)  "
+    printf "$(rgb_bg_esc $palette_variant_3)  $(no_color_esc)  -  "
 
-    printf "$(rgb_bg_esc $color_primary_variant_1) $(no_color_esc)"
-    printf "$(rgb_bg_esc $color_primary_variant_2) $(no_color_esc)"
-    printf "$(rgb_bg_esc $color_primary_variant_3) $(no_color_esc)"
+    printf "$(rgb_bg_esc $palette_variant_1) $(no_color_esc)"
+    printf "$(rgb_bg_esc $palette_variant_2) $(no_color_esc)"
+    printf "$(rgb_bg_esc $palette_variant_3) $(no_color_esc)"
     printf '\n\n'
 
     printf "Accent\n\n"
-    printf "$(rgb_bg_esc $color_accent)  $(no_color_esc) $(rgb_fg_esc $color_accent) $ λ "
+    printf "Regular  "
+    printf "$(rgb_bg_esc $palette_accent)  $(no_color_esc) $(rgb_fg_esc $palette_accent) $ λ $(no_color_esc)"
+    printf '\n\n'
+    printf "Dark     "
+    printf "$(rgb_bg_esc $palette_accent_dark)  $(no_color_esc) $(rgb_fg_esc $palette_accent_dark) $ λ $(no_color_esc)"
     printf '\n\n'
 
-    printf "$(rgb_fg_esc $color_text)text color $(no_color_esc) "
+    printf "$(rgb_fg_esc $palette_text)text color $(no_color_esc) "
 
     no_color_esc
     echo

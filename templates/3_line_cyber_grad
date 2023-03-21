@@ -5,9 +5,9 @@ prepare_colors
 
 prompt_cmd() {
   TMP_GIT_BRANCH="$(gitbranch)"
-  LINE_1="$(rgb_gradient $color_primary $color_secondary '┌───( '$(current_user)@$HOSTNAME' )-[ '$(basename $PWD)' ]')"
-  LINE_2="$(rgb_fg $color_primary)│ $(rgb_gradient $color_primary $color_secondary $(short_datetime)) $(rgb_fg $color_accent)~ $(rgb_fg $color_secondary)$TMP_GIT_BRANCH"
-  LINE_3="$(rgb_fg $color_primary)└─$(rgb_fg $color_accent) λ $(rgb_fg $color_text)"
+  LINE_1="$(rgb_gradient $palette_gradient_start $palette_gradient_end '┌───( '$(current_user)@$HOSTNAME' )-[ '$(basename $PWD)' ]')"
+  LINE_2="$(rgb_fg $palette_primary)│ $(rgb_gradient $palette_gradient_start $palette_gradient_end $(short_datetime)) $(rgb_fg $palette_accent)~ $(rgb_fg $palette_secondary)$TMP_GIT_BRANCH"
+  LINE_3="$(rgb_fg $palette_primary)└─$(rgb_fg $palette_accent) λ $(rgb_fg $palette_text)"
 
   PS1="\r\n${LINE_1}\r\n${LINE_2}\r\n${LINE_3}"
 }
