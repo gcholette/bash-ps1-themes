@@ -1,10 +1,10 @@
 #!/bin/bash
 palette_primary="#f7a305"
-palette_primary_dark="#f7a305"
+palette_primary_dark="#b57600"
 palette_secondary="#d700ff"
-palette_secondary_dark="#d700ff"
+palette_secondary_dark="#9000ab"
 palette_accent="#f7a305"
-palette_accent_dark="#f7a305"
+palette_accent_dark="#b07300"
 palette_gradient_start="#f7a305"
 palette_gradient_end="#d700ff"
 palette_variant_1="#ec596a"
