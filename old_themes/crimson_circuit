@@ -1,5 +1,6 @@
 #!/bin/bash
 scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
 source $scriptDir'/../lib/lib'
-source $scriptDir'/../palettes/sunset'
-source $scriptDir'/../templates/3_line_retro_long_grad'
+source $scriptDir'/../palettes/crimson'
+source $scriptDir'/../templates/circuit'
+

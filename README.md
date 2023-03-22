@@ -1,20 +1,23 @@
 <h1 align="center">
-  Bash PS1 Themes :rainbow: 
+  Bash Prompt Themes :rainbow: 
 </h1>
 
 <p align="center">
-Themes for the PS1 bash environment variable, with a color gradient feature.
+Bash prompt themes, with a color gradient feature.
 </p>
 <p align="center">
     <img src="https://raw.githubusercontent.com/showlet/bash_ps1_themes/master/misc/photos/magenta_gradient3.png"/>
 </p>
-  
+
 ## How to use
+See themes in `./themes/`, try them out by using `source ./themes/teal_horizon`. Or demo them all with `./demo_themes`
 
-See themes in `./themes/`, try them out by using `source ./themes/Dark-red/dark_red_1`. Or demo them all with `./test_all_themes`
+### Persistent use
+Ideally have the repository cloned/downloaded on your machine because themes aren't fully standalone, they use the lib/lib file from this repo. 
 
-For persistent use, source the theme in your `.bashrc`. For instance, at the end of your `.bashrc`, write `source ~/Documents/bash-ps1-themes/themes/teal_cyber_3`. Replace `~/Documents` with whatever path you store `bash-ps1-themes/` in.
+Source the theme in your `.bashrc`. For instance, at the end of your `.bashrc`, write `source ~/Documents/bash-ps1-themes/themes/teal_cyber_3`. Replace `~/Documents` with whatever path you store `bash-ps1-themes/` in. 
 
+### Notice
 Works only in Bash shells, incompatible with zsh.
 
 ### Examples
