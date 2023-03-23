@@ -110,6 +110,39 @@ rgb_gradient() {
   fi
 }
 
+# Gradient over start and end rgb string formatted as "255;255;255"
+rgb_gradient_partial() {
+  start_color=$1
+  end_color=$2
+  partial_percent=$3
+  str=${*:4}
+  str_len=${#str}
+  steps=$((str_len - $partial_percent /  100))
+
+  if [ $str_len != 0 ] 
+  then 
+    IFS=';' read r1 g1 b1 <<< "$start_color"
+    IFS=';' read r2 g2 b2 <<< "$end_color"
+
+    dr=$((r2 - r1))
+    dg=$((g2 - g1))
+    db=$((b2 - b1))
+
+    rstep=$((dr / steps))
+    gstep=$((dg / steps))
+    bstep=$((db / steps))
+
+
+    for i in $(seq 0 $((steps))); do
+      r3=$((r1 + rstep*i))
+      g3=$((g1 + gstep*i))
+      b3=$((b1 + bstep*i))
+      printf "\[\033[38;2;${r3};${g3};${b3}m\]${str:i:1}"
+    done
+    printf "\[\033[0m\]"
+  fi
+}
+
 # unescaped gradient for demos
 rgb_gradient_esc() {
   start_color=$1
@@ -169,6 +202,15 @@ long_datetime() {
 
 short_datetime() {
 	TMP_DATE=$(date "+%a %d %b %T")
+	printf "$TMP_DATE"
+}
+
+long_date() {
+  printf "$(date "+%A %d %B")"
+}
+
+short_date() {
+	TMP_DATE=$(date "+%a %d %b")
 	printf "$TMP_DATE"
 }
 

@@ -7,9 +7,9 @@ prepare_colors
 
 prompt_cmd() {
   TMP_GIT_BRANCH="$(gitbranch)"
-  LINE_1="$(rgb_fg $palette_primary_dark)┌───( $(rgb_fg $palette_primary)$(current_user)@$HOSTNAME $(rgb_fg $palette_primary_dark))-[ $(rgb_fg $palette_secondary)$(basename $PWD)$(rgb_fg $palette_primary_dark) ]"
-  LINE_2="$(rgb_fg $palette_primary_dark)│ $(rgb_fg $palette_secondary_dark)$(short_datetime) $(rgb_fg $palette_accent_dark)~ $(rgb_fg $palette_secondary_dark)$TMP_GIT_BRANCH"
-  LINE_3="$(rgb_fg $palette_primary_dark)└─$(rgb_fg $palette_accent) λ $(rgb_fg $palette_text)"
+  LINE_1="$(rgb_fg $palette_primary_dark)┌─── $(rgb_fg $palette_primary)$(current_user) $(rgb_fg $palette_primary_dark)─ $(rgb_fg $palette_secondary)$(basename $PWD)$(rgb_fg $palette_primary_dark)"
+  LINE_2="$(rgb_fg $palette_primary_dark)│ $(rgb_fg $palette_primary_dark)$(short_datetime) $(rgb_fg $palette_secondary_dark)$TMP_GIT_BRANCH"
+  LINE_3="$(rgb_fg $palette_primary_dark)└─$(rgb_fg $palette_accent) $ $(rgb_fg $palette_text)"
 
   PS1="\r\n${LINE_1}\r\n${LINE_2}\r\n${LINE_3}"
 }
