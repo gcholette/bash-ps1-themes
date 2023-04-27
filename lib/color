@@ -1,0 +1,135 @@
+#!/bin/bash
+
+# turns the #123b84 color codes to 203;133;54 rgb codes
+hex_color_to_rgb() {
+  hex=${1#"#"}
+
+  r=$((0x${hex:0:2}))
+  g=$((0x${hex:2:2}))
+  b=$((0x${hex:4:2}))
+
+  printf "%d;%d;%d\n" "$r" "$g" "$b"
+}
+
+# Inserts a "255;255;255" formatted code inside ansi color code
+rgb_fg_ps1() {
+  printf "\[\033[38;2;$(hex_color_to_rgb "$1")m\]"
+}
+
+rgb_bg_ps1() {
+  printf "\[\033[48;2;$(hex_color_to_rgb "$1")m\]"
+}
+
+rgb_bg() {
+  printf "\033[48;2;$(hex_color_to_rgb "$1")m"
+}
+
+rgb_fg() {
+  printf "\033[38;2;$(hex_color_to_rgb "$1")m"
+}
+
+256_fg_ps1() {
+  printf "\[\033[38;5;$(hex_color_to_rgb "$1")m\]"
+}
+
+256_bg_ps1() {
+  printf "\[\033[48;5;$(hex_color_to_rgb "$1")m\]"
+}
+
+256_bg() {
+  printf "\033[48;5;${1}m"
+}
+
+no_color_ps1() {
+  printf "\[\033[0m\]"
+}
+
+no_color() {
+  printf "\033[0m\033[49m"
+}
+
+# Gradient over bash 256 color codes, 
+# takes starting color code and number of codes to gradient over
+256_ps1_fg_gradient() {
+  COUNTER=0
+  COLOR=$1
+  COLS=$2
+  TXT=${*:3}
+  MOD="$(($((${#TXT}/${COLS}))*2))"
+  if [ $MOD == 0 ]
+  then
+	  mod=1
+  fi
+  for (( i=0; i<${#TXT}; i++ )); do  
+    printf "\e[38;5;${COLOR}m${TXT:COUNTER:1}"
+    COUNTER=$(expr $COUNTER + 1)
+    if [ $((i%$MOD)) == 0 ]
+    then 
+      COLOR=$(expr $COLOR + 1)
+    fi
+  done
+}
+
+# Base function
+rgb_gradient_base() {
+  kind=$1
+  escape=$2
+  start_color=$3
+  end_color=$4
+  str=${*:5}
+  str_len=${#str}
+
+  escape_start=""
+  escape_end=""
+  mode=38
+
+  if [ "$kind" = "bg" ]; then
+    mode=48
+  fi
+
+  if [ "$escape" = "ps1" ]; then
+    escape_start="\["
+    escape_end="\]"
+  fi
+
+  start_color=$(hex_color_to_rgb "$start_color")
+  end_color=$(hex_color_to_rgb "$end_color")
+
+  if [ $str_len != 0 ]
+  then
+    IFS=';' read r1 g1 b1 <<< "$start_color"
+    IFS=';' read r2 g2 b2 <<< "$end_color"
+
+    dr=$((r2 - r1))
+    dg=$((g2 - g1))
+    db=$((b2 - b1))
+
+    rstep=$((dr / str_len))
+    gstep=$((dg / str_len))
+    bstep=$((db / str_len))
+
+    for i in $(seq 0 $((str_len))); do
+      r3=$((r1 + rstep*i))
+      g3=$((g1 + gstep*i))
+      b3=$((b1 + bstep*i))
+      printf "${escape_start}\033[${mode};2;${r3};${g3};${b3}m${escape_end}${str:i:1}"
+    done
+    printf "${escape_start}\033[0m${escape_end}"
+  fi
+}
+
+ps1_fg_gradient() {
+  rgb_gradient_base fg ps1 "$@"
+}
+
+ps1_bg_gradient() {
+  rgb_gradient_base bg ps1 "$@"
+}
+
+fg_gradient() {
+  rgb_gradient_base fg none "$@"
+}
+
+bg_gradient() {
+  rgb_gradient_base bg none "$@"
+}

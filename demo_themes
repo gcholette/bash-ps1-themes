@@ -7,7 +7,7 @@ clear
 
 printf "\033[48;5;4m"
 center_string Themes Demo
-no_color_esc
+no_color
 
 for FILE in $(ls $themesDir); 
   do 
@@ -16,13 +16,13 @@ for FILE in $(ls $themesDir);
     printf "\033[3m"
     printf "\033[48;5;17m"
     center_string $FILE
-    no_color_esc
+    no_color
     source $themesDir/$FILE
     eval $PROMPT_COMMAND
     PS1_EVAL=$(eval "echo \"$PS1\"")
     PS1_EVAL=$(echo "$PS1_EVAL" | sed 's/\\\[//g;s/\\\]//g')
     echo -e "$PS1_EVAL"
-    no_color_esc
+    no_color
     echo
     echo
   fi
@@ -30,4 +30,4 @@ done
 
 printf "\033[48;5;17m"
 center_string ''
-no_color_esc
+no_color
