@@ -48,28 +48,6 @@ no_color() {
   printf "\033[0m\033[49m"
 }
 
-# Gradient over bash 256 color codes, 
-# takes starting color code and number of codes to gradient over
-256_ps1_fg_gradient() {
-  COUNTER=0
-  COLOR=$1
-  COLS=$2
-  TXT=${*:3}
-  MOD="$(($((${#TXT}/${COLS}))*2))"
-  if [ $MOD == 0 ]
-  then
-	  mod=1
-  fi
-  for (( i=0; i<${#TXT}; i++ )); do  
-    printf "\e[38;5;${COLOR}m${TXT:COUNTER:1}"
-    COUNTER=$(expr $COUNTER + 1)
-    if [ $((i%$MOD)) == 0 ]
-    then 
-      COLOR=$(expr $COLOR + 1)
-    fi
-  done
-}
-
 # Base function
 rgb_gradient_base() {
   kind=$1
@@ -118,11 +96,11 @@ rgb_gradient_base() {
   fi
 }
 
-ps1_fg_gradient() {
+fg_gradient_ps1() {
   rgb_gradient_base fg ps1 "$@"
 }
 
-ps1_bg_gradient() {
+bg_gradient_ps1() {
   rgb_gradient_base bg ps1 "$@"
 }
 
@@ -132,4 +110,26 @@ fg_gradient() {
 
 bg_gradient() {
   rgb_gradient_base bg none "$@"
+}
+
+# Gradient over bash 256 color codes, 
+# takes starting color code and number of codes to gradient over
+256_ps1_fg_gradient() {
+  COUNTER=0
+  COLOR=$1
+  COLS=$2
+  TXT=${*:3}
+  MOD="$(($((${#TXT}/${COLS}))*2))"
+  if [ $MOD == 0 ]
+  then
+	  mod=1
+  fi
+  for (( i=0; i<${#TXT}; i++ )); do  
+    printf "\e[38;5;${COLOR}m${TXT:COUNTER:1}"
+    COUNTER=$(expr $COUNTER + 1)
+    if [ $((i%$MOD)) == 0 ]
+    then 
+      COLOR=$(expr $COLOR + 1)
+    fi
+  done
 }

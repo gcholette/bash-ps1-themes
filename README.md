@@ -43,6 +43,6 @@ The themes work with the PROMPT_COMMAND and PS1 environment variables. The PROMP
 
 ### Usage of lib functions 
 
-`ps1_fg_gradient "255;0;0" "0;0;255" "localhost"`
+`fg_gradient_ps1 "255;0;0" "0;0;255" "localhost"`
 
 `256_ps1_fg_gradient 83 6 "localhost"` 

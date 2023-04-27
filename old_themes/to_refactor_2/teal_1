@@ -18,7 +18,7 @@ prompt_cmd() {
   else
     BRANCH_SECTION=""
   fi
-  LINE_1="$(ps1_fg_gradient $rgb_1 $rgb_1_2 '┌───( '$USERNAME$USER@$HOSTNAME' )-[ '$(basename $PWD)' ]')"
+  LINE_1="$(fg_gradient_ps1 $rgb_1 $rgb_1_2 '┌───( '$USERNAME$USER@$HOSTNAME' )-[ '$(basename $PWD)' ]')"
   LINE_2="$(rgb_fg_ps1 $rgb_1_1)│ $(short_datetime)"
   LINE_3="$(rgb_fg_ps1 $rgb_2)└─$BRANCH_SECTION$(rgb_fg_ps1 $rgb_3) λ $(rgb_fg_ps1 $rgb_text)"
 
