@@ -1,4 +1,5 @@
 function gs() {
+    echo
     if [ -n "$1" ]; then
         git add "$@"
     fi
@@ -27,7 +28,7 @@ function cl() {
     if [ -n "$1" ]; then
         cd "$1"
     fi
-    printf "$(rgb_fg '#0eccb9')"
+    echo "$(rgb_fg '#0eccb9')"
     pwd
     echo "$(rgb_fg '#5500ff')--------------------------------"
     special_ls
