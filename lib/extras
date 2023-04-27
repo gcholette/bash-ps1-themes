@@ -1,5 +1,14 @@
+#!/bin/bash
+
+prefix_command() {
+    if [ -n "$BASH_COMMAND" ] && [ "$BASH_COMMAND" != "$PROMPT_COMMAND" ]; then
+        echo
+    fi
+}
+
+trap 'prefix_command' DEBUG
+
 function gs() {
-    echo
     if [ -n "$1" ]; then
         git add "$@"
     fi
@@ -28,7 +37,7 @@ function cl() {
     if [ -n "$1" ]; then
         cd "$1"
     fi
-    echo "$(rgb_fg '#0eccb9')"
+    printf "$(rgb_fg '#0eccb9')"
     pwd
     echo "$(rgb_fg '#5500ff')--------------------------------"
     special_ls
