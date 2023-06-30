@@ -6,7 +6,7 @@
 Themes for the PS1 bash environment variable, with a color gradient feature.
 </p>
 <p align="center">
-    <img src="https://raw.githubusercontent.com/showlet/bash_ps1_themes/master/photos/magenta_gradient3.png"/>
+    <img src="./photos/magenta_gradient3.png"/>
 </p>
   
 ## How to use
@@ -22,11 +22,11 @@ Works only in Bash shells, incompatible with zsh.
 ### Examples
 Find more examples in the `themes/` folders.
 
-![original_grad](https://raw.githubusercontent.com/showlet/bash_ps1_themes/master/photos/original_gradient.png)
+![original_grad](./photos/original_gradient.png)
 
-![teal_theme](https://raw.githubusercontent.com/showlet/bash_ps1_themes/master/photos/teal_theme1.png)
+![teal_theme](./photos/teal_theme1.png)
 
-![magenta_grad](https://raw.githubusercontent.com/showlet/bash_ps1_themes/master/photos/magenta_gradient3.png)
+![magenta_grad](./photos/magenta_gradient3.png)
 
 ![red_theme](https://user-images.githubusercontent.com/8711020/142965044-cfb09fba-b78a-4acd-9e0c-91fab0c0126c.png)
 
@@ -36,7 +36,7 @@ Find more examples in the `themes/` folders.
 
 ## How it works
 
-To generate gradients with [Bash colors](https://misc.flogisoft.com/bash/tip_colors_and_formatting#colors1), the [grad()](https://github.com/gcholette/bash-ps1-themes/blob/master/util/grad) function spreads x consecutive color ids across a word, starting at a certain color id. 
+To generate gradients with [Bash colors](https://misc.flogisoft.com/bash/tip_colors_and_formatting#colors1), the [grad()](./util/grad) function spreads x consecutive color ids across a word, starting at a certain color id. 
 
 Usage: `$(grad 83 6 "localhost")` 
 
