@@ -9,11 +9,34 @@ Bash prompt themes, with a color gradient feature.
     <img src="misc/photos/teal_horizon_demo.png"/>
 </p>
 
-## How to use
+<h2 align="center">
+  Examples
+</h1>
+<p align="center">
+  <img src="misc/photos/demo_1.png"/>
+</p>
+<p align="center">
+  <img src="misc/photos/demo_2.png"/>
+</p>
+<p align="center">
+  <img src="misc/photos/demo_3.png"/>
+</p>
+<p align="center">
+  <img src="misc/photos/demo_4.png"/>
+</p>
+<p align="center">
+  <img src="misc/photos/demo_5.png"/>
+</p>
+<p align="center">
+  <img src="misc/photos/demo_6.png"/>
+</p>
+
+
+# How to use
 
 Themes are a combination of a template and a color palette. The template is the prompt itself and the colors from the palette are applied onto it.
 
-### Demo the themes
+## Demo the themes
 
 Demo all the themes using:
 
@@ -22,7 +45,7 @@ Demo all the themes using:
 ```
 <img src="misc/photos/demo_themes.png"/>
 
-### Use a theme
+## Use a theme
 
 To use a theme simply source it to your current shell:
 
@@ -30,7 +53,7 @@ To use a theme simply source it to your current shell:
 source ./themes/teal_horizon
 ```
 
-### Persistent use
+## Persistent use
 Clone the repo on your machine because themes aren't fully standalone, they use the `lib/lib` file from this repo. 
 
 Source the theme in your `.bashrc`. For instance, at the end of your `.bashrc`, add: 
@@ -38,17 +61,17 @@ Source the theme in your `.bashrc`. For instance, at the end of your `.bashrc`, 
 # Change the path with where you put bash-ps1-themes
 source ~/bash-ps1-themes/themes/teal_cyber_3
 ```
-## How it works
+# How it works
 
 The themes work with the PROMPT_COMMAND and PS1 environment variables. The PROMPT_COMMAND invokes a function that in turn invokes other functions to build a PS1 variable. The scripts generally require some functions from the `lib` file instead of being completely standalone.
 
-## Development
+# Development
 
 You can create your own templates and color palettes.
 
-### Palette development
+## Palette development
 
-#### Creating a palette
+### Creating a palette
 
 Create a new file in the `palettes/` folder and use/update the following variables to your liking:
 
@@ -68,7 +91,7 @@ palette_variant_3="#00d7ff"
 palette_text="#d2d2d2"
 ```
 
-#### Viewing a palette
+### Viewing a palette
 
 To preview the palette in the terminal, use:
 
@@ -82,9 +105,9 @@ To preview the palette in the terminal, use:
 ```
 <img src="misc/photos/demo_palettes_detailed.png"/>
 
-### Template development
+## Template development
 
-#### Creating a template
+### Creating a template
 
 Create a new file in the `templates/` folder.
 
@@ -105,7 +128,7 @@ prompt_cmd() {
 export PROMPT_COMMAND='prompt_cmd'
 ```
 
-#### Lib API
+### Lib API
 
 Here are some functions you can use in your templates:
 ```bash
@@ -125,7 +148,7 @@ bg_gradient_ps1 "#ff0000" "#00ff00" "some string to receive gradient"
 gitbranch
 ```
 
-### Generating the themes from your new palette/template
+## Generating the themes from your new palette/template
 
 Then, to apply the palette to the templates, there is a `generate_themes` script that combines all sets of templates and palettes together:
 ```bash
@@ -134,5 +157,5 @@ Then, to apply the palette to the templates, there is a `generate_themes` script
 
 Your theme will be generated in the `themes/` folder.
 
-## Notice
+# Notice
 Works only in Bash shells.

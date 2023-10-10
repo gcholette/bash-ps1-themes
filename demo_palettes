@@ -61,7 +61,7 @@ if [ $detailed -eq 1 ]; then
       printf "$(rgb_bg $palette_variant_3) $(no_color)"
       printf '\n\n'
 
-      printf "\033[1mText color:$(no_color) $(rgb_fg $palette_text)this is the stdin text color$(no_color) "
+      printf "\033[1mText color:$(no_color) $(rgb_fg $palette_text)this is the text color$(no_color) "
 
       no_color
       echo
