@@ -11,11 +11,11 @@ Bash prompt themes, with a color gradient feature.
 
 ## How to use
 
-Themes are a combination of a template and a color palette. The template is the prompt itself, and the colors from the palette are applied onto it.
+Themes are a combination of a template and a color palette. The template is the prompt itself and the colors from the palette are applied onto it.
 
 ### Demo the themes
 
-Demo the themes to select one using:
+Demo all the themes using:
 
 ```bash
 ./demo_themes
@@ -83,6 +83,8 @@ To preview the palette in the terminal, use:
 <img src="misc/photos/demo_palettes_detailed.png"/>
 
 ### Template development
+
+#### Creating a template
 
 Create a new file in the `templates/` folder.
 
