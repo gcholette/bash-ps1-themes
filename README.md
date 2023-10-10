@@ -18,7 +18,7 @@ Bash prompt themes, with a color gradient feature.
 
 Themes are a combination of a template and a color palette. The template is the prompt itself and the colors from the palette are applied onto it.
 
-The theme names are a combinasion of their `template_palette` like `teal_horizon`.
+Theme names are a combinasion of their template and palette: `template_palette` like `teal_horizon`.
 
 ## Demo the themes
 
