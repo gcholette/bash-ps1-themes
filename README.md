@@ -45,7 +45,9 @@ source ~/bash-ps1-themes/themes/teal_cyber_3
 ```
 # How it works
 
-The themes work with the PROMPT_COMMAND and PS1 environment variables. The PROMPT_COMMAND invokes a function that in turn invokes other functions to build a PS1 variable. The scripts generally require some functions from the `lib` file instead of being completely standalone.
+The themes work with the PROMPT_COMMAND and PS1 environment variables. 
+
+The PROMPT_COMMAND invokes a function that in turn invokes other functions to build a PS1 variable.
 
 # Development
 
