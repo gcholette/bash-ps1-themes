@@ -6,30 +6,12 @@
 Bash prompt themes, with a color gradient feature.
 </p>
 <p align="center">
-    <img src="misc/photos/teal_horizon_demo.png"/>
-</p>
-
-<h2 align="center">
-  Examples
-</h1>
-<p align="center">
-  <img src="misc/photos/demo_1.png"/>
-</p>
-<p align="center">
-  <img src="misc/photos/demo_2.png"/>
-</p>
-<p align="center">
   <img src="misc/photos/demo_3.png"/>
-</p>
-<p align="center">
+  <img src="misc/photos/teal_horizon_demo.png"/>
   <img src="misc/photos/demo_4.png"/>
 </p>
-<p align="center">
-  <img src="misc/photos/demo_5.png"/>
-</p>
-<p align="center">
-  <img src="misc/photos/demo_6.png"/>
-</p>
+
+
 
 
 # How to use
