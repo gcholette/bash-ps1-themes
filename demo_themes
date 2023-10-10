@@ -1,0 +1,33 @@
+#!/bin/bash
+scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
+themesDir="${scriptDir}/themes"
+source $scriptDir'/lib/lib'
+
+clear
+
+printf "\033[48;5;4m"
+center_string Themes Demo
+no_color
+
+for FILE in $(ls $themesDir); 
+  do 
+  if [ $FILE != 'README.md' ] && [ $FILE != 'to_refactor' ] && [ $FILE != 'templates' ] && [ $FILE != 'to_refactor_2' ] && [ $FILE != 'palettes' ]
+  then
+    printf "\033[3m"
+    printf "\033[48;5;17m"
+    center_string $FILE
+    no_color
+    source $themesDir/$FILE
+    eval $PROMPT_COMMAND
+    PS1_EVAL=$(eval "echo \"$PS1\"")
+    PS1_EVAL=$(echo "$PS1_EVAL" | sed 's/\\\[//g;s/\\\]//g')
+    echo -e "$PS1_EVAL"
+    no_color
+    echo
+    echo
+  fi
+done
+
+printf "\033[48;5;17m"
+center_string ''
+no_color

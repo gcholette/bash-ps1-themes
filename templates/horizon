@@ -1,0 +1,14 @@
+#!/bin/bash
+scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
+source $scriptDir'/../lib/lib'
+
+prompt_cmd() {
+  DATETIME_1="$(long_date) $(short_time)"
+  LINE_1="$(rgb_bg_ps1 $palette_variant_1) $(no_color_ps1) $(fg_gradient_ps1 $palette_gradient_start $palette_gradient_end $(current_user)@$HOSTNAME)$(rgb_fg_ps1 $palette_accent) >> $(fg_gradient_ps1 $palette_gradient_start $palette_gradient_end $(dirs)) "
+  LINE_2="$(rgb_bg_ps1 $palette_variant_2) $(no_color_ps1) $(fg_gradient_ps1 $palette_gradient_start $palette_gradient_end $DATETIME_1) $(rgb_fg_ps1 $palette_accent)$(gitbranch)"
+  LINE_3="$(rgb_bg_ps1 $palette_variant_3) $(no_color_ps1) $(rgb_fg_ps1 $palette_accent)$ $(rgb_fg_ps1 $palette_text)"
+
+  PS1="\r\n${LINE_1}\r\n${LINE_2}\r\n${LINE_3}"
+}
+
+export PROMPT_COMMAND='prompt_cmd'

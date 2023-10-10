@@ -1,0 +1,19 @@
+#!/bin/bash
+scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
+source $scriptDir'/../lib/lib'
+
+rgb_1="215;0;255"
+rgb_2="195;90;182"
+rgb_3="255;175;0"
+rgb_text="210;210;210"
+
+prompt_cmd() {
+  TMP_GIT_BRANCH="$(gitbranch)"
+  LINE_1="$(fg_gradient_ps1 $rgb_1 $rgb_3 '┌───( '$USERNAME$USER@$HOSTNAME' )-[ '$(basename $PWD)' ]')"
+  LINE_2="$(rgb_fg_ps1 $rgb_1)│ $(fg_gradient_ps1 $rgb_1 $rgb_3 $(short_datetime) $TMP_GIT_BRANCH)"
+  LINE_3="$(rgb_fg_ps1 $rgb_1)└─$(rgb_fg_ps1 $rgb_3) λ $(rgb_fg_ps1 $rgb_text)"
+
+  PS1="\r\n${LINE_1}\r\n${LINE_2}\r\n${LINE_3}"
+}
+
+export PROMPT_COMMAND='prompt_cmd'

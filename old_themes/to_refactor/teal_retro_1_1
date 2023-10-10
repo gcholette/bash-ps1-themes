@@ -1,0 +1,23 @@
+#!/bin/bash
+scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
+source $scriptDir'/../lib/lib'
+
+PRIMARY="\[\e[38;5;37m\]"
+SECONDARY='\[\033[38;5;129m\]'
+THIRD='\[\033[38;5;214m\]'
+NC='\[\033[0m\]'
+
+p() {
+  TEXT=$1
+  printf "$PRIMARY${TEXT}${NC}"
+}
+s() {
+  TEXT=$1
+  printf "${SECONDARY}${TEXT}${NC}"
+}
+t() {
+  TEXT=$1
+  printf "${THIRD}${TEXT}${NC}"
+}
+
+export PS1="\[\e[30;48;5;37m\]  ${NC} $(fg_gradient_ps1 '3;252;177' '161;3;252' $USERNAME@$HOSTNAME) $(s '>>=') $(s '\w') \r\n\[\e[30;48;5;37m\]  ${NC} \[\e[38;5;37m\]\d \[\e[38;5;31m\]\t$( s '$(git branch 2>/dev/null | grep '^*' | cut -c 2-)' )$(t ' λ') "

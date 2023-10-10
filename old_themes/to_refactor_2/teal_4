@@ -1,0 +1,21 @@
+#!/bin/bash
+scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
+source $scriptDir'/../lib/lib'
+
+
+rgb_1="27;207;198"
+rgb_2="149;79;255"
+rgb_3="207;171;27"
+rgb_4="143;152;255"
+rgb_text="210;210;210"
+xterm_1=37
+xterm_2=38
+
+prompt_cmd() {
+  LINE_1="$(256_bg_ps1 $xterm_1) $(no_color_ps1) $(fg_gradient_ps1 $rgb_1 $rgb_2 $USERNAME '>>' $(basename $PWD)) $(no_color_ps1)"
+  LINE_2="$(256_bg_ps1 $xterm_2) $(no_color_ps1)$(rgb_fg_ps1 $rgb_3) $ $(rgb_fg_ps1 $rgb_text)"
+
+  PS1="\r\n${LINE_1}\r\n${LINE_2}"
+}
+
+export PROMPT_COMMAND='prompt_cmd'

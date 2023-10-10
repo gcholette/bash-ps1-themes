@@ -1,0 +1,41 @@
+#!/bin/bash
+scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
+
+## this script combines the contents of the palettes and templates folders
+## to create individual themes for every variation of every template and palettes.
+## It overwrites the files inside themes, but does not touch manually created files
+## that do not match the palette_template file name format.
+
+
+palettes_dir="$scriptDir/palettes"
+templates_dir="$scriptDir/templates"
+themes_dir="$scriptDir/themes"
+
+if [ ! -d $themes_dir ]; then
+  mkdir $themes_dir
+fi
+
+for palette in "${palettes_dir}"/*; do
+  for template in "${templates_dir}"/*; do
+    palette_name="$(basename $palette)"
+    template_name="$(basename $template)"
+
+    theme_file_name="${palette_name%%.*}_${template_name%%.*}"
+
+    theme_file="$themes_dir/$theme_file_name"
+    if [ ! -f $themes_file ]; then
+      touch "${theme_file}"
+      chmod +x "${theme_file}"
+    else
+      # Clear the file if it exists
+      printf "" > $theme_file
+    fi
+    
+    # Theme script contents
+    echo '#!/bin/bash' >> $theme_file
+    echo 'scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")' >> $theme_file
+    echo "source \$scriptDir'/../lib/lib'" >> $theme_file
+    echo "source \$scriptDir'/../palettes/${palette_name}'" >> $theme_file
+    echo "source \$scriptDir'/../templates/${template_name}'" >> $theme_file
+  done
+done

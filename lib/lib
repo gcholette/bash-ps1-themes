@@ -1,0 +1,55 @@
+#!/bin/bash
+libDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
+source $libDir'/color'
+
+gitbranch() {
+  branch_id=$(git branch 2>/dev/null | grep '^*' | cut -c 2-)
+  if [ $branch_id ]
+  then
+    printf $branch_id
+  fi
+}
+
+function current_user() {
+  if [ -n "$USER" ]; then
+    printf "$USER"
+  else
+    printf "$USERNAME"
+  fi
+}
+
+long_datetime() {
+	TMP_DATE=$(date "+%A %d %B %Y %T")
+	printf "$TMP_DATE"
+}
+
+short_datetime() {
+	TMP_DATE=$(date "+%a %d %b %T")
+	printf "$TMP_DATE"
+}
+
+long_date() {
+  printf "$(date "+%A %d %B")"
+}
+
+short_date() {
+	TMP_DATE=$(date "+%a %d %b")
+	printf "$TMP_DATE"
+}
+
+short_time() {
+  TMP_TIME=$(date "+%T")
+	printf "$TMP_TIME"
+}
+
+# center_string() {
+#   local string="$1"
+#   local padding=$(( ($COLUMNS - ${#string}) / 2 ))
+#   printf '%*s%s%*s\n' $padding '' "$string" $padding ''
+# }
+
+center_string() {
+  local string="$1"
+  local padding=$(( ($(tput cols) - ${#string}) / 2))
+  printf '%*s%s%*s\n' $padding '' "$string" $padding ''
+}

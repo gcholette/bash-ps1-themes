@@ -1,0 +1,45 @@
+#!/bin/bash
+
+prefix_command() {
+    if [ -n "$BASH_COMMAND" ] && [ "$BASH_COMMAND" != "$PROMPT_COMMAND" ]; then
+        echo
+    fi
+}
+
+trap 'prefix_command' DEBUG
+
+function gs() {
+    if [ -n "$1" ]; then
+        git add "$@"
+    fi
+    git status
+}
+
+function special_ls() {
+  ls -lA --group-directories-first --color=never | awk 'BEGIN {
+      dir_color = "\033[38;2;211;3;252m";
+      file_color = "\033[38;2;0;123;255m";
+      reset_color = "\033[0m";
+      line_number = 0;
+    }
+    {
+      line_number++;
+      if (line_number == 1 && /^total/) { next }
+      if ($1 ~ /^d/) {
+        printf("%s%-12s %s%s\n", dir_color, $1, $9, reset_color);
+      } else {
+        printf("%s%-12s %s%s\n", file_color, $1, $9, reset_color);
+      }
+    }'
+}
+
+function cl() {
+    if [ -n "$1" ]; then
+        cd "$1"
+    fi
+    printf "$(rgb_fg '#0eccb9')"
+    pwd
+    echo "$(rgb_fg '#5500ff')--------------------------------"
+    special_ls
+    echo "$(rgb_fg '#5500ff')--------------------------------"
+}

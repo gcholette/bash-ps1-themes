@@ -1,0 +1,14 @@
+#!/bin/bash
+scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
+source $scriptDir'/../lib/lib'
+
+prompt_cmd() {
+  TMP_GIT_BRANCH="$(gitbranch)"
+  LINE_1="$(rgb_fg_ps1 $palette_primary_dark)┌─── $(rgb_fg_ps1 $palette_primary)$(current_user) $(rgb_fg_ps1 $palette_primary_dark)─ $(rgb_fg_ps1 $palette_secondary)$(basename $PWD)$(rgb_fg_ps1 $palette_primary_dark)"
+  LINE_2="$(rgb_fg_ps1 $palette_primary_dark)│ $(rgb_fg_ps1 $palette_primary_dark)$(short_time) $(rgb_fg_ps1 $palette_secondary_dark)$TMP_GIT_BRANCH"
+  LINE_3="$(rgb_fg_ps1 $palette_primary_dark)└─$(rgb_fg_ps1 $palette_accent) $ $(rgb_fg_ps1 $palette_text)"
+
+  PS1="\r\n${LINE_1}\r\n${LINE_2}\r\n${LINE_3}"
+}
+
+export PROMPT_COMMAND='prompt_cmd'

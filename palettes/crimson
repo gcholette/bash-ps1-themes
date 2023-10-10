@@ -1,0 +1,13 @@
+#!/bin/bash
+palette_primary="#B30000"
+palette_primary_dark="#910000"
+palette_secondary="#787878"
+palette_secondary_dark="#595959"
+palette_accent="#595959"
+palette_accent_dark="#424242"
+palette_gradient_start="#B30000"
+palette_gradient_end="#750018"
+palette_variant_1="#8a0907"
+palette_variant_2="#750000"
+palette_variant_3="#680000"
+palette_text="#bdbdbd"

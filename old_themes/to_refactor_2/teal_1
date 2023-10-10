@@ -1,0 +1,28 @@
+#!/bin/bash
+scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
+source $scriptDir'/../lib/lib'
+
+rgb_1="27;207;198"
+rgb_1_1="34;197;230"
+rgb_1_2="73;136;252"
+rgb_2="55;172;240"
+rgb_3="207;171;27"
+rgb_4="143;152;255"
+rgb_text="210;210;210"
+
+prompt_cmd() {
+  TMP_GIT_BRANCH="$(gitbranch)"
+  if [ $TMP_GIT_BRANCH ]
+  then
+    BRANCH_SECTION="( $TMP_GIT_BRANCH )"
+  else
+    BRANCH_SECTION=""
+  fi
+  LINE_1="$(fg_gradient_ps1 $rgb_1 $rgb_1_2 '┌───( '$USERNAME$USER@$HOSTNAME' )-[ '$(basename $PWD)' ]')"
+  LINE_2="$(rgb_fg_ps1 $rgb_1_1)│ $(short_datetime)"
+  LINE_3="$(rgb_fg_ps1 $rgb_2)└─$BRANCH_SECTION$(rgb_fg_ps1 $rgb_3) λ $(rgb_fg_ps1 $rgb_text)"
+
+  PS1="\r\n${LINE_1}\r\n${LINE_2}\r\n${LINE_3}"
+}
+
+export PROMPT_COMMAND='prompt_cmd'

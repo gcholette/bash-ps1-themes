@@ -1,0 +1,5 @@
+#!/bin/bash
+scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
+source $scriptDir'/../lib/lib'
+source $scriptDir'/../palettes/mystic'
+source $scriptDir'/../templates/circuit'
