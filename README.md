@@ -59,7 +59,7 @@ You can create your own templates and color palettes.
 
 ### Creating a palette
 
-Create a new file in the `palettes/` folder and use/update the following variables to your liking:
+Create a new file in the `palettes/` folder and update the following variables to your liking:
 
 ```bash
 #!/bin/bash
@@ -133,6 +133,8 @@ bg_gradient_ps1 "#ff0000" "#00ff00" "some string to receive gradient"
 # Current git branch
 gitbranch
 ```
+
+See the lib/ source for more functions.
 
 ## Generating the themes from your new palette/template
 
