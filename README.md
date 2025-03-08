@@ -74,7 +74,6 @@ palette_gradient_end="#008cff"
 palette_variant_1="#00d7af"
 palette_variant_2="#00d7d7"
 palette_variant_3="#00d7ff"
-palette_text="#d2d2d2"
 ```
 
 ### Viewing a palette
@@ -106,7 +105,7 @@ source $scriptDir'/../lib/lib'
 
 prompt_cmd() {
   LINE_1="$(rgb_fg_ps1 $palette_primary)$(current_user) $(rgb_fg_ps1 $palette_secondary)$(basename $PWD)"
-  LINE_2="$(rgb_fg_ps1 $palette_accent)$ $(rgb_fg_ps1 $palette_text)"
+  LINE_2="$(rgb_fg_ps1 $palette_accent)$ $(no_color_ps1)"
 
   PS1="\r\n${LINE_1}\r\n${LINE_2}"
 }
