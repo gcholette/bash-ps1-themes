@@ -4,9 +4,9 @@ source $libDir'/color'
 
 gitbranch() {
   branch_id=$(git branch 2>/dev/null | grep '^*' | cut -c 2-)
-  if [ $branch_id ]
+  if [ -n "$branch_id" ]
   then
-    printf $branch_id
+    printf '%s' "$branch_id"
   fi
 }
 
